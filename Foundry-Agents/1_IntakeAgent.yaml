@@ -1,0 +1,27 @@
+metadata:
+  logo: Avatar_Default.svg
+  description: ""
+  modified_at: "1774453175"
+  microsoft.voice-live.enabled: "false"
+object: agent.version
+id: Insurance-IntakeAgent:3
+name: Insurance-IntakeAgent
+version: "3"
+description: ""
+created_at: 1774453218
+definition:
+  kind: prompt
+  model: gpt-5.1-chat
+  instructions: |-
+    Use WorkIQ tool, to read any submission emails, and extract below information from it. Insured Name, Broker, Effective Date, Coverage Requested, Point of Contact Broker. Check any emails which Contains "Submission" keyword in the email subject.
+    When you respond about the submissions, share all the extracted information in structured json format
+  tools:
+    - type: mcp
+      server_label: WorkIQCopilot
+      server_url: https://agent365.svc.cloud.microsoft/agents/servers/mcp_M365Copilot
+      require_approval:
+        never:
+          tool_names:
+            - copilot_chat
+      project_connection_id: WorkIQCopilot
+status: active

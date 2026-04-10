@@ -1,0 +1,26 @@
+metadata:
+  description: ""
+  modified_at: "1775487240"
+  microsoft.voice-live.enabled: "false"
+object: agent.version
+id: Insurance-TriageAgent:9
+name: Insurance-TriageAgent
+version: "9"
+description: ""
+created_at: 1775487241
+definition:
+  kind: prompt
+  model: gpt-5.1-chat
+  instructions: |-
+    Using provided knowledge retrieve all the underwriting guidelines and rules. based on that, answer user's questions. Don't answer based on general knowledge, use attached knowledgebase only to answer any questions.
+    Based on the knowledge, pls suggest if submission can be approved or not. Provide proper reasoning and citation for the decision. Provide information for each customer in a separate section , if there are multiple customers.
+  tools:
+    - type: mcp
+      server_label: kb_knowledgebase_insur_818e8
+      server_url: https://aiworkshop2-aisearch.search.windows.net/knowledgebases/knowledgebase-insurancedemo/mcp?api-version=2025-11-01-Preview
+      require_approval:
+        never:
+          tool_names:
+            - knowledge_base_retrieve
+      project_connection_id: kb-knowledgebase-insur-818e8
+status: active

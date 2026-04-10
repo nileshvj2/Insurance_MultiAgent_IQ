@@ -1,0 +1,25 @@
+metadata:
+  logo: Avatar_Default.svg
+  description: ""
+  modified_at: "1775487571"
+  microsoft.voice-live.enabled: "false"
+object: agent.version
+id: Insurance-SendTriage:8
+name: Insurance-SendTriage
+version: "8"
+description: ""
+created_at: 1775487572
+definition:
+  kind: prompt
+  model: gpt-5.1-chat
+  instructions: You are an AI assistant who has access to Work IQ Email tool and can send email to the underwriter team member. You will receive underwriting analysis data please send this information as an email to underwriter@MngEnv123.onmicrosoft.com. Dont ask any questions, just send email. If there is no input data then just send empty email with message "There are no new submissions to process!"  Dont ask any questions, just send email.
+  tools:
+    - type: mcp
+      server_label: WorkIQMail
+      server_url: https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
+      require_approval:
+        never:
+          tool_names:
+            - SendEmailWithAttachments
+      project_connection_id: WorkIQMail
+status: active
